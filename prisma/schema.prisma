@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  password  String
+  firstName String
+  lastName  String
+  role      String     @default("SCHOLAR") // SCHOLAR, FIELD_MANAGER, FINANCE_OFFICER, DIRECTOR
+  createdAt DateTime   @default(now())
+  
+  documents Document[]
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  scholarId   String
+  title       String
+  type        String   // transcript, enrollment, receipt, other
+  fileUrl       String
+  extractedText String?  // Optional field to store parsed OCR data
+  gradesData    String?  // JSON stringified array of [{course, units, grade}]
+  status        String   @default("pending") // pending, reviewed, approved, processed, rejected
+  notes       String?
+  submittedAt DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  scholar     User     @relation(fields: [scholarId], references: [id], onDelete: Cascade)
+}

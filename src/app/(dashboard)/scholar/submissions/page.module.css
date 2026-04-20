@@ -1,0 +1,30 @@
+.container { max-width: 600px; margin: 0 auto; }
+.header { margin-bottom: 1.5rem; }
+.title { font-size: 1.5rem; font-weight: bold; margin: 0; }
+.subtitle { color: var(--text-muted); margin: 0; }
+
+.formGrid { display: flex; flex-direction: column; gap: 1.25rem; }
+.field { display: flex; flex-direction: column; gap: 0.25rem; }
+.label { font-weight: 600; font-size: 0.9rem; }
+
+.select, .textarea {
+  padding: 0.5rem; border: 1px solid var(--border-light); 
+  border-radius: var(--border-radius); font-family: inherit; font-size: 0.9rem;
+}
+.select:focus, .textarea:focus { outline: none; border-color: var(--text-primary); }
+.textarea { min-height: 100px; resize: vertical; }
+
+.dropzone {
+  border: 2px dashed var(--border-light); border-radius: var(--border-radius);
+  padding: 2rem; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; background: var(--bg-primary); cursor: pointer; text-align: center;
+  position: relative;
+}
+.dropzone:hover { border-color: #475569; background: var(--bg-secondary); }
+.dropzoneIcon { color: var(--text-muted); margin-bottom: 0.5rem; }
+.dropzoneText { font-weight: 600; margin: 0; font-size: 0.9rem;}
+.dropzoneSub { color: var(--text-muted); margin: 0; font-size: 0.8rem; }
+
+.fileInput { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+
+.buttonRow { display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1rem; }

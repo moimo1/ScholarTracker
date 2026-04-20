@@ -1,0 +1,53 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.welcomeSection { margin-bottom: 0.5rem; }
+.greeting { font-size: 1.75rem; font-weight: bold; margin: 0; }
+.subtitle { color: var(--text-muted); margin: 0; }
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.statValue { font-size: 2rem; font-weight: bold; margin: 0.25rem 0; }
+.statLabel { font-size: 0.9rem; color: var(--text-muted); }
+
+.timelineSection { margin-top: 1rem; }
+.sectionTitle { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; }
+
+.timeline { display: flex; flex-direction: column; gap: 1rem; position: relative; }
+.timeline::before {
+  content: ''; position: absolute; left: 1rem; top: 1rem; bottom: 0;
+  width: 2px; background: var(--border-light);
+}
+
+.timelineItem { display: flex; gap: 1rem; position: relative; z-index: 1; }
+.timelineIconWrapper {
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: var(--bg-secondary); border: 2px solid var(--border-light);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+.timelineItem[data-status="approved"] .timelineIconWrapper { border-color: var(--status-approved); color: var(--status-approved); }
+.timelineItem[data-status="pending"] .timelineIconWrapper { border-color: var(--status-pending); color: var(--status-pending); }
+.timelineItem[data-status="reviewed"] .timelineIconWrapper { border-color: var(--status-reviewed); color: var(--status-reviewed); }
+
+.timelineContent { flex-grow: 1; padding-top: 0.25rem; width: 100%; }
+
+.timelineHeader { display: flex; justify-content: space-between; align-items: center; }
+.timelineTitle { font-weight: 600; margin: 0; }
+.timelineDate { font-size: 0.85rem; color: var(--text-muted); }
+
+.statusBadge {
+  display: inline-block; padding: 0.2rem 0.5rem; border-radius: 4px;
+  font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-top: 0.5rem;
+}
+
+.badge-pending { background: #422006; color: #facc15; border: 1px solid #854d0e; }
+.badge-reviewed { background: #172554; color: #60a5fa; border: 1px solid #1e3a8a; }
+.badge-approved { background: #064e3b; color: #34d399; border: 1px solid #065f46; }
